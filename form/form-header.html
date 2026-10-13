@@ -1,0 +1,30 @@
+<!-- ISTUETA ROOFING — Header del survey (va en un elemento HTML/Texto arriba del primer campo).
+     Sin custom values: el área de servicio va escrita directo. -->
+<style>
+@keyframes isTitleIn{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes isRedSheen{0%{background-position:220% center}100%{background-position:-120% center}}
+@keyframes isPing{0%{transform:scale(.5);opacity:.9}100%{transform:scale(2.4);opacity:0}}
+</style>
+
+<div style="text-align:center;margin:6px 0 20px;animation:isTitleIn .6s cubic-bezier(.19,1,.22,1) both;font-family:'Inter',system-ui,-apple-system,sans-serif;">
+
+  <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 13px;border-radius:100px;background:#FAF7F4;border:1px solid #E5DFD7;font-size:10.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#A8131A;">
+    <span style="position:relative;display:inline-block;width:7px;height:7px;border-radius:50%;background:#A8131A;">
+      <span style="position:absolute;inset:0;border-radius:50%;background:#C8262E;animation:isPing 1.8s ease-out infinite;"></span>
+    </span>
+    Local homeowners only
+  </div>
+
+  <div style="font-size:clamp(14px,3.6vw,16px);font-weight:700;color:#4A4641;margin-top:12px;line-height:1.3;">
+    Only if you're a homeowner in
+  </div>
+
+  <div style="font-size:clamp(23px,6.4vw,30px);font-weight:900;letter-spacing:-.6px;line-height:1.12;margin-top:2px;
+    background:linear-gradient(100deg,#16140F 0%,#16140F 34%,#A8131A 46%,#E0565C 50%,#A8131A 54%,#16140F 66%,#16140F 100%);
+    background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    animation:isRedSheen 5s linear 1s infinite;">
+    Miami-Dade or Broward
+  </div>
+
+  <div style="width:42px;height:3px;margin:12px auto 0;border-radius:3px;background:linear-gradient(90deg,#A8131A,#D89B7A);"></div>
+</div>

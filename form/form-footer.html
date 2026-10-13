@@ -1,0 +1,32 @@
+<!-- ISTUETA ROOFING — Footer del survey (botones). Va en el HTML del footer/botones del survey en GHL. -->
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap");
+
+.ghl-footer button,
+.ghl-footer input[type="submit"],
+.ghl-button-bar button{font-family:"Inter",sans-serif !important;transition:all .15s ease !important;box-shadow:none !important}
+
+/* NEXT */
+.ghl-next-button,.ghl-footer-next,#nextButton,[class*="next-btn"]{
+  background:#16140F !important;color:#ffffff !important;border:none !important;border-radius:10px !important;
+  font-family:"Inter",sans-serif !important;font-size:14px !important;font-weight:800 !important;
+  height:40px !important;padding:0 20px !important;box-shadow:0 6px 14px rgba(22,20,15,.18) !important}
+.ghl-next-button:hover,.ghl-footer-next:hover,#nextButton:hover,[class*="next-btn"]:hover{background:#2B2620 !important}
+.ghl-next-button svg,.ghl-footer-next svg,#nextButton svg,[class*="next-btn"] svg,
+.ghl-next-button path,.ghl-footer-next path,#nextButton path,[class*="next-btn"] path{fill:#ffffff !important;stroke:#ffffff !important}
+
+/* SUBMIT — rojo Istueta */
+.ghl-btn.ghl-submit-btn,button[type="submit"],input[type="submit"],[class*="submit-btn"],[id*="submitButton"]{
+  background:linear-gradient(135deg,#B7242B,#A8131A 55%,#8C0F15) !important;color:#ffffff !important;border:none !important;
+  border-radius:10px !important;font-family:"Inter",sans-serif !important;font-size:14px !important;font-weight:900 !important;
+  letter-spacing:.3px !important;text-transform:uppercase !important;height:46px !important;padding:0 24px !important;
+  box-shadow:0 10px 22px rgba(168,19,26,.35) !important}
+.ghl-btn.ghl-submit-btn:hover,button[type="submit"]:hover,[class*="submit-btn"]:hover,[id*="submitButton"]:hover{filter:brightness(1.08) !important;transform:translateY(-1px) !important}
+
+/* BACK */
+.ghl-back-button,.ghl-footer-back,#backButton,[class*="back-btn"]{
+  background:transparent !important;color:#16140F !important;border:none !important;
+  font-family:"Inter",sans-serif !important;font-size:20px !important;font-weight:500 !important;padding:0 !important;box-shadow:none !important}
+
+.ghl-footer button:focus,.ghl-button-bar button:focus{outline:none !important}
+</style>

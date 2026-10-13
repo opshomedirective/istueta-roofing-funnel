@@ -1,0 +1,516 @@
+/* =====================================================================
+   ISTUETA ROOFING — GHL Survey (estructura Sunstrong/Blackline · recoloreado ROJO Istueta)
+   ---------------------------------------------------------------------
+   Sobrio, sin look de cómic: fuera el borde negro grueso + la sombra
+   sólida "física". Opción normal = tarjeta blanca, borde fino, sombra
+   suave. SELECCIONADA = relleno NEGRO #16140F con letra BLANCA + check
+   ÁMBAR. Al seleccionar hay un micro "hundido" + pop del check para que
+   la elección se SIENTA aunque el survey auto-avance rápido.
+   (El tiempo de auto-avance lo controla GHL, no el CSS.)
+
+   ⚠ Reglas GHL: SIN variables var(--x) — se descartan y dejan todo
+   invisible; todo con literales. Se cubren las dos estructuras del DOM
+   (input+label y label:has(>input)). El texto NUNCA se vuelve invisible.
+   NADA referente al footer/botones (eso va en el HTML del footer).
+
+   + Al final: bloque 4) FIX del dropdown (.custom-vue-select) — evita la
+     doble caja. Es lo ÚNICO agregado a tu original.
+   ===================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+/* ─── Fuente base ──────────────────────────────────────────────────── */
+*,
+body,
+form,
+label,
+input,
+button,
+select,
+textarea,
+.ghl-form-wrap,
+.survey-form {
+  font-family: "Inter", system-ui, -apple-system, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  box-sizing: border-box !important;
+}
+
+/* ─── Animaciones de los títulos (bloques HTML aparte) ─────────────── */
+@keyframes fmTitleIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fmSheen {
+  0% {
+    background-position: 220% center;
+  }
+  100% {
+    background-position: -120% center;
+  }
+}
+
+/* ─── Animación de SELECCIÓN (el "hundido" + el pop del check) ──────── */
+@keyframes fmSelectPop {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  40% {
+    transform: scale(0.97) translateY(2px);
+  } /* se hunde */
+  100% {
+    transform: scale(1) translateY(-1px);
+  } /* asienta (= estado :checked) */
+}
+@keyframes fmCheckPop {
+  0% {
+    transform: scale(0.2);
+    opacity: 0.2;
+  }
+  55% {
+    transform: scale(1.18);
+  }
+  100% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+/* =====================================================================
+   1) COMPACTAR — matar la altura fija que GHL reserva por slide
+   ===================================================================== */
+.ghl-form-wrap,
+.survey-wrap,
+.survey-container,
+.survey-body,
+.ghl-question-container,
+.ghl-page-container,
+[class*="slide-container"],
+[class*="question-container"],
+[class*="page-container"],
+[class*="survey-slide"] {
+  min-height: 0 !important;
+  height: auto !important;
+}
+.ghl-form-wrap > div:empty,
+.survey-body > div:empty,
+[class*="question"] > div:empty {
+  display: none !important;
+}
+
+/* ─── Card exterior ────────────────────────────────────────────────── */
+.ghl-form-wrap {
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid #E5DFD7 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px rgba(22, 20, 15, 0.08) !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 768px) {
+  .ghl-form-wrap,
+  .survey-wrap,
+  .survey-container,
+  .survey-body,
+  [class*="survey"],
+  [class*="form-wrap"] {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    margin: 0 !important;
+  }
+}
+
+/* =====================================================================
+   2) OPCIONES — sobrias · seleccionada NEGRA con letra blanca
+   ===================================================================== */
+input[type="radio"],
+input[type="checkbox"] {
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  pointer-events: none !important;
+}
+input[type="radio"] + label::before,
+input[type="checkbox"] + label::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* ── Estado normal: tarjeta blanca, borde fino, sombra suave ── */
+input[type="radio"] + label,
+input[type="checkbox"] + label,
+label:has(> input[type="radio"]),
+label:has(> input[type="checkbox"]) {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 15px 52px 15px 18px !important;
+  margin-bottom: 9px !important;
+  background: #ffffff !important;
+  border: 1.5px solid #E5DFD7 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 2px rgba(22, 20, 15, 0.05) !important;
+  cursor: pointer !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #16140F !important;
+  -webkit-text-fill-color: #16140F !important;
+  line-height: 1.3 !important;
+  transition: background 0.18s, border-color 0.18s, box-shadow 0.18s,
+    transform 0.16s !important;
+}
+input[type="radio"] + label *,
+input[type="checkbox"] + label *,
+label:has(> input[type="radio"]) *,
+label:has(> input[type="checkbox"]) * {
+  color: #16140F !important;
+  -webkit-text-fill-color: #16140F !important;
+}
+
+/* ── Indicador a la derecha: aro vacío ── */
+input[type="radio"] + label::after,
+input[type="checkbox"] + label::after,
+label:has(> input[type="radio"])::after,
+label:has(> input[type="checkbox"])::after {
+  content: "" !important;
+  position: absolute !important;
+  right: 15px !important;
+  top: 50% !important;
+  width: 22px !important;
+  height: 22px !important;
+  margin-top: -11px !important;
+  border-radius: 50% !important;
+  border: 2px solid #D6CFC6 !important;
+  background: #ffffff !important;
+  transition: background 0.18s, border-color 0.18s,
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* ── Hover: gris un poco más marcado, leve elevación ── */
+input[type="radio"] + label:hover,
+input[type="checkbox"] + label:hover,
+label:has(> input[type="radio"]):hover,
+label:has(> input[type="checkbox"]):hover {
+  background: #FAF7F4 !important;
+  border-color: #b9c0ca !important;
+  box-shadow: 0 4px 12px rgba(22, 20, 15, 0.07) !important;
+  transform: translateY(-1px) !important;
+}
+input[type="radio"] + label:hover::after,
+input[type="checkbox"] + label:hover::after,
+label:has(> input[type="radio"]):hover::after,
+label:has(> input[type="checkbox"]):hover::after {
+  border-color: #9aa2ad !important;
+}
+
+/* ── SELECCIONADA: relleno negro, letra blanca, check ámbar + "hundido" ── */
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label,
+label:has(> input[type="radio"]:checked),
+label:has(> input[type="checkbox"]:checked) {
+  background: #16140F !important;
+  background-color: #16140F !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-weight: 700 !important;
+  border-color: #16140F !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 8px 20px rgba(22, 20, 15, 0.22) !important;
+  animation: fmSelectPop 0.34s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+input[type="radio"]:checked + label *,
+input[type="checkbox"]:checked + label *,
+label:has(> input[type="radio"]:checked) *,
+label:has(> input[type="checkbox"]:checked) * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+input[type="radio"]:checked + label::after,
+input[type="checkbox"]:checked + label::after,
+label:has(> input[type="radio"]:checked)::after,
+label:has(> input[type="checkbox"]:checked)::after {
+  border-color: #A8131A !important;
+  background: #A8131A
+    url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")
+    center / 13px 13px no-repeat !important;
+  transform: scale(1.06) !important;
+  animation: fmCheckPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+@media (max-width: 768px) {
+  input[type="radio"] + label,
+  input[type="checkbox"] + label,
+  label:has(> input[type="radio"]),
+  label:has(> input[type="checkbox"]) {
+    padding: 13px 46px 13px 16px !important;
+    margin-bottom: 8px !important;
+    font-size: 14px !important;
+    border-radius: 11px !important;
+  }
+  input[type="radio"] + label::after,
+  input[type="checkbox"] + label::after,
+  label:has(> input[type="radio"])::after,
+  label:has(> input[type="checkbox"])::after {
+    right: 13px !important;
+    width: 21px !important;
+    height: 21px !important;
+    margin-top: -10.5px !important;
+  }
+}
+
+/* ─── Labels de campo (Nombre / Teléfono) ──────────────────────────── */
+.field-label,
+.ghl-form-wrap label:not(input + label):not(:has(> input)),
+form label:not(input + label):not(:has(> input)) {
+  font-size: 10.5px !important;
+  font-weight: 800 !important;
+  color: #7c8794 !important;
+  -webkit-text-fill-color: #7c8794 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 6px !important;
+  display: block !important;
+  line-height: 1.4 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  position: static !important;
+}
+.field-label::after,
+.ghl-form-wrap label:not(input + label):not(:has(> input))::after,
+form label:not(input + label):not(:has(> input))::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* ─── Label del Email ──────────────────────────────────────────────── */
+.hl-email-field label,
+.ghl-email-field label,
+.hl-email-label,
+.ghl-email-label,
+label[for*="email"],
+label[for*="Email"] {
+  font-family: "Inter", system-ui, -apple-system, sans-serif !important;
+  font-size: 10.5px !important;
+  font-weight: 800 !important;
+  color: #7c8794 !important;
+  -webkit-text-fill-color: #7c8794 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 6px !important;
+  display: block !important;
+  line-height: 1.4 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  position: static !important;
+}
+
+/* ─── Progreso (rojo Istueta como acento) ─────────────────────────────────── */
+.ghl-progress-bar,
+.ghl-progress-bar-background {
+  height: 5px !important;
+  background: #F1ECE6 !important;
+  border: none !important;
+  border-radius: 50px !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+.ghl-progress-bar-fill,
+.hl-progress .fill {
+  background: linear-gradient(90deg, #C8262E, #A8131A) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  box-shadow: 0 0 10px rgba(168, 19, 26, 0.55) !important;
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+.ghl-progress-bar-text,
+[class*="progress-text"],
+[class*="page-count"],
+[class*="step-count"] {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #7c8794 !important;
+  -webkit-text-fill-color: #7c8794 !important;
+  letter-spacing: 0.4px !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* =====================================================================
+   3) INPUTS — 16px anti-autozoom · foco sobrio (charcoal)
+   ===================================================================== */
+.ghl-input,
+.hl-field-input,
+.hl-input,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  width: 100% !important;
+  background: #ffffff !important;
+  border: 1.5px solid #DDD5CB !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+  padding: 14px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #16140F !important;
+  -webkit-text-fill-color: #16140F !important;
+  outline: none !important;
+  transition: border-color 0.18s, box-shadow 0.18s !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  font-family: "Inter", system-ui, -apple-system, sans-serif !important;
+}
+input[type="tel"] {
+  padding-left: 52px !important;
+}
+.hl-phone-field,
+.hl-email-field,
+[class*="input-group"],
+[class*="form-group"],
+.hl-form-group,
+.iti {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+.iti {
+  width: 100% !important;
+  display: block !important;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+.ghl-input:focus,
+.hl-field-input:focus,
+textarea:focus,
+select:focus {
+  border-color: #16140F !important;
+  box-shadow: 0 0 0 3px rgba(22, 20, 15, 0.12) !important;
+  outline: none !important;
+}
+input[type="text"]:hover:not(:focus),
+input[type="email"]:hover:not(:focus),
+input[type="tel"]:hover:not(:focus),
+input[type="number"]:hover:not(:focus),
+input[type="date"]:hover:not(:focus),
+textarea:hover:not(:focus),
+select:hover:not(:focus) {
+  border-color: #9aa2ad !important;
+}
+::placeholder {
+  color: #9aa4b0 !important;
+  -webkit-text-fill-color: #9aa4b0 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+  font-family: "Inter", system-ui, -apple-system, sans-serif !important;
+}
+
+/* =====================================================================
+   4) DESPLEGABLE (vue-multiselect: .multiselect) — doble caja + colores
+   ---------------------------------------------------------------------
+   El campo "¿dónde está su casa?" es un vue-multiselect. La DOBLE CAJA
+   salía porque la sección 3 (input[type="text"]) le pintaba borde+fondo+
+   padding al buscador interno .multiselect__input. Aquí se "apaga" ese
+   input (transparente, sin caja) → manda SOLO tu caja de GHL. Y se
+   arregla la opción resaltada (naranja → charcoal, como tus opciones).
+   NO se toca .multiselect__tags (esa es la caja que tú configuras en GHL).
+   ===================================================================== */
+
+/* a) buscador interno: transparente, sin caja (mata el doble borde) */
+.multiselect .multiselect__input,
+.multiselect input.multiselect__input {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  font-size: 16px !important;
+  color: #16140F !important;
+  -webkit-text-fill-color: #16140F !important;
+}
+
+/* b) valor elegido / placeholder legibles */
+.multiselect__single {
+  background: transparent !important;
+  color: #16140F !important;
+  -webkit-text-fill-color: #16140F !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.multiselect__placeholder {
+  color: #9aa4b0 !important;
+  -webkit-text-fill-color: #9aa4b0 !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* c) la lista: opciones limpias */
+.multiselect__content-wrapper {
+  background: #ffffff !important;
+}
+.multiselect .multiselect__option {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #16140F !important;
+  -webkit-text-fill-color: #16140F !important;
+  background: #ffffff !important;
+}
+/* opción resaltada (hover/teclado): fuera el NARANJA → charcoal, letra blanca */
+.multiselect .multiselect__option--highlight,
+.multiselect .multiselect__option--highlight::after {
+  background: #16140F !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+/* opción ya seleccionada */
+.multiselect .multiselect__option--selected,
+.multiselect .multiselect__option--selected::after {
+  background: #f3f4f6 !important;
+  color: #16140F !important;
+  -webkit-text-fill-color: #16140F !important;
+  font-weight: 700 !important;
+}
+.multiselect .multiselect__option--selected.multiselect__option--highlight,
+.multiselect .multiselect__option--selected.multiselect__option--highlight::after {
+  background: #16140F !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

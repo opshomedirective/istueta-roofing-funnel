@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<title>Thank You | Istueta Roofing</title>
+<meta name="theme-color" content="#16140F">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#ffffff; --bg-alt:#FAF7F4; --fg:#16140F; --body:#4A4641; --muted:#8f877c; --border:#E5DFD7;
+    --red:#A8131A; --red2:#C8262E; --grad:linear-gradient(135deg,#B7242B,#A8131A 55%,#8C0F15);
+    --clay:#D89B7A; --clay2:#F0C3A6;
+    --deep:#16140F; --deep2:#2B2620; --deep-grad:linear-gradient(120deg,var(--deep),var(--deep2));
+    --display:'Cormorant Garamond',Georgia,serif;
+  }
+  html{scroll-behavior:smooth}
+  body{font-variant-numeric:lining-nums;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%}
+  @keyframes shimmerText{0%{background-position:0% center}100%{background-position:200% center}}
+
+  /* ══ TOPBAR ══ */
+  .top-bar{position:sticky;top:0;z-index:50;background:linear-gradient(120deg,#16140F,#221e19);border-bottom:1px solid rgba(255,255,255,.08)}
+  .top-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 20px;max-width:1200px;margin:0 auto}
+  .top-logo img{height:50px;width:auto;display:block}
+  @media(max-width:520px){.top-logo img{height:40px}}
+  .top-call{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:100px;background:var(--grad);color:#fff;font-weight:900;font-size:13.5px;white-space:nowrap;box-shadow:0 6px 18px rgba(168,19,26,.4)}
+  .top-call svg{width:16px;height:16px;stroke:#fff;fill:none}
+  .top-call .lbl{font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;opacity:.82}
+  @media(max-width:339px){.top-call .lbl{display:none}}
+
+  /* ══ HERO ══ */
+  .hero-shell{position:relative;background:var(--bg-alt);overflow:hidden}
+  .hero-wallpaper{position:absolute;inset:0;background:url('https://opshomedirective.github.io/istueta-roofing-funnel/assets/hero-aerial.webp') center 35%/cover no-repeat;filter:grayscale(.35)}
+  .hero-wallpaper .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,247,244,.9),rgba(250,247,244,.88) 50%,rgba(250,247,244,.97))}
+  .hero{position:relative;z-index:1;padding:40px 20px 46px;text-align:center}
+  .hero-in{max-width:720px;margin:0 auto}
+  .ok{position:relative;width:64px;height:64px;margin:0 auto 16px}
+  .ok::before{content:'';position:absolute;inset:-26%;border-radius:50%;background:radial-gradient(circle,rgba(168,19,26,.32),transparent 66%);filter:blur(6px);animation:okGlow 2.8s ease-in-out infinite}
+  @keyframes okGlow{0%,100%{opacity:.55;transform:scale(.94)}50%{opacity:1;transform:scale(1.06)}}
+  .ok svg{position:relative;width:100%;height:100%;overflow:visible}
+  .ok svg path{fill:none;stroke:var(--red);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:80;stroke-dashoffset:80;animation:okDraw .9s .25s cubic-bezier(.16,1,.3,1) forwards}
+  @keyframes okDraw{to{stroke-dashoffset:0}}
+  .tag{position:relative;display:inline-flex;margin-bottom:14px;padding:6px 15px;border-radius:9px;background:var(--deep-grad);box-shadow:0 6px 15px rgba(22,20,15,.26)}
+  .tag em{font-style:normal;color:rgba(255,255,255,.93);font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+  .tag em b{color:var(--clay);font-weight:900}
+  .hero h1{font-family:var(--display);font-size:clamp(42px,6vw,64px);font-weight:700;line-height:1;letter-spacing:-.01em}
+  .hero h1 span{display:block}
+  .got{font-style:italic;color:var(--red);background:linear-gradient(104deg,var(--red) 24%,var(--red2) 42%,#f2a6a9 50%,var(--red2) 58%,var(--red) 76%);background-size:240% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmerText 3.4s linear infinite}
+  .hero .sub{margin:18px auto 0;max-width:540px;font-size:clamp(15px,1.6vw,17px);font-weight:500;color:var(--body);line-height:1.6}
+  .hero .sub b{color:var(--fg);font-weight:800}
+  .call-box{display:inline-flex;align-items:center;gap:14px;margin-top:24px;padding:14px 20px;border-radius:16px;background:#fff;border:1px solid var(--border);box-shadow:0 10px 26px rgba(22,20,15,.1);text-align:left}
+  .call-box .ic{width:42px;height:42px;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .call-box .ic svg{width:20px;height:20px;stroke:#fff;fill:none}
+  .call-box small{display:block;font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  .call-box b{display:block;font-size:20px;font-weight:900;color:var(--fg);margin-top:2px}
+
+  /* ══ NEXT STEPS ══ */
+  .steps-sec{position:relative;padding:60px 20px 66px;background:linear-gradient(165deg,#100e0b,#231f1a);overflow:hidden}
+  .steps-sec::before{content:'';position:absolute;top:-22%;left:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(168,19,26,.26),transparent 62%);pointer-events:none}
+  .steps-sec>*{position:relative;z-index:2}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 34px}
+  .sec-head h2{font-family:var(--display);font-size:clamp(34px,4.4vw,48px);font-weight:700;color:#fff;line-height:1.04}
+  .sec-head h2 .hl{color:var(--clay);font-style:italic}
+  .sec-head p{margin-top:10px;color:rgba(255,255,255,.74);font-size:14.5px;font-weight:500}
+  .jr{max-width:620px;margin:0 auto;position:relative}
+  .jr::before{content:'';position:absolute;left:25px;top:20px;bottom:30px;width:3px;border-radius:3px;background:rgba(255,255,255,.14)}
+  .jr-fill{position:absolute;left:25px;top:20px;width:3px;height:0;border-radius:3px;background:linear-gradient(to bottom,var(--clay),var(--red2));box-shadow:0 0 14px rgba(200,38,46,.7);transition:height 2.1s cubic-bezier(.22,1,.36,1)}
+  .jr.on .jr-fill{height:calc(100% - 50px)}
+  .jr-step{position:relative;display:grid;grid-template-columns:54px 1fr;gap:17px;align-items:center;padding-bottom:15px;opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+  .jr.on .jr-step{opacity:1;transform:none}
+  .jr-step:last-child{padding-bottom:0}
+  .jr-node{position:relative;z-index:2;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;color:rgba(255,255,255,.5);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);transition:background .5s,color .5s,box-shadow .5s,transform .5s;transition-delay:calc(var(--d,0s) + .35s)}
+  .jr.on .jr-node{background:var(--grad);color:#fff;border-color:transparent;transform:rotate(-4deg);box-shadow:0 10px 24px rgba(168,19,26,.45)}
+  .jr-node em{font-style:normal;transform:rotate(4deg)}
+  .jr-card{background:#fff;border-radius:14px;padding:14px 17px;box-shadow:0 12px 30px rgba(0,0,0,.26)}
+  .jr-card b{display:block;font-size:15px;font-weight:800;color:var(--fg);line-height:1.2}
+  .jr-card p{margin-top:5px;font-size:12.5px;color:#5f5850;line-height:1.5}
+  @media(max-width:520px){.jr-step{grid-template-columns:46px 1fr;gap:13px}.jr-node{width:46px;height:46px;border-radius:14px;font-size:17px}.jr::before,.jr-fill{left:21px}}
+
+  /* ══ WHILE YOU WAIT ══ */
+  .wait{padding:54px 20px 20px;background:var(--bg)}
+  .wait-head{text-align:center;max-width:620px;margin:0 auto 24px}
+  .wait-head h2{font-family:var(--display);font-size:clamp(32px,4vw,44px);font-weight:700;line-height:1.05}
+  .wait-head h2 .hl{color:var(--red);font-style:italic}
+  .wait-grid{max-width:940px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:760px){.wait-grid{grid-template-columns:repeat(3,1fr);gap:16px}}
+  .wt{display:flex;gap:13px;align-items:flex-start;padding:16px 17px;border-radius:14px;background:var(--bg-alt);border:1px solid var(--border)}
+  .wt .n{width:28px;height:28px;min-width:28px;border-radius:8px;background:var(--deep-grad);color:var(--clay2);font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center}
+  .wt b{display:block;font-size:14px;font-weight:800;line-height:1.2}
+  .wt p{margin-top:5px;font-size:12.5px;color:var(--body);line-height:1.5}
+
+  /* ══ HAPPY STRIP ══ */
+  .strip{padding:34px 20px 56px;background:var(--bg)}
+  .strip-in{max-width:940px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .strip-in img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;display:block;box-shadow:0 10px 22px rgba(22,20,15,.14)}
+  .strip p{text-align:center;margin-top:16px;font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+
+  /* ══ FOOTER ══ */
+  .foot{padding:40px 20px;text-align:center;background:#100e0b;color:rgba(255,255,255,.7)}
+  .foot-logo{height:72px;width:auto;margin:0 auto 16px;display:block}
+  .foot .fl{font-size:12px;color:var(--clay);text-transform:uppercase;letter-spacing:.13em;font-weight:700;line-height:1.7}
+  .foot .fad{font-size:12.5px;margin-top:8px;color:rgba(255,255,255,.62)}
+  .foot .fcopy{font-size:11.5px;margin-top:14px;color:rgba(255,255,255,.42)}
+
+  @media(prefers-reduced-motion:reduce){
+    .ok::before,.got{animation:none}.ok svg path{animation:none;stroke-dashoffset:0}
+    .jr-step,.jr-node,.jr-fill{transition:none}
+  }
+</style>
+<style>
+    html,body{max-width:100%!important;overflow-x:hidden!important;background:#fff!important}
+    .hl-page,.hl-page-creator--container,.hl_page-creator--container,[class*="hl-page"],
+    #preview-container,#preview-container>div,.inner-container,.section_wrapper,
+    .elHTMLBlock,.elCustomHtml,[data-page-element="HtmlBlock/V1"]{
+      max-width:100%!important;width:100%!important;padding:0!important;margin:0!important;background:transparent!important
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="top-in">
+      <a class="top-logo" href="#"><img src="https://opshomedirective.github.io/istueta-roofing-funnel/assets/logo-white.webp" alt="Istueta Roofing" width="480" height="225"></a>
+      <a class="top-call" href="tel:+17542272759"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="lbl">Call now</span>(754) 227-2759</a>
+    </div>
+  </header>
+
+  <div class="hero-shell">
+    <div class="hero-wallpaper"><div class="veil"></div></div>
+    <section class="hero">
+      <div class="hero-in">
+        <div class="ok"><svg viewBox="0 0 52 52"><path d="M9 27.5 20.5 39 43 14.5"/></svg></div>
+        <div class="tag"><em>Request <b>received</b></em></div>
+        <h1><span>You're all <em class="got">set.</em></span><span>We'll take it from here.</span></h1>
+        <p class="sub">Thanks for choosing <b>Istueta Roofing</b>. A roofing specialist will review your request and reach out within 24 hours to schedule your free roof inspection and estimate — <b>with $1,000 OFF</b> your new roof.</p>
+        <a class="call-box" href="tel:+17542272759"><span class="ic"><svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span><small>Want to talk sooner?</small><b>(754) 227-2759</b></span></a>
+      </div>
+    </section>
+  </div>
+
+  <section class="steps-sec">
+    <div class="sec-head">
+      <h2>What happens <span class="hl">next.</span></h2>
+      <p>Exactly what to expect from here — no surprises, no pressure.</p>
+    </div>
+    <div class="jr" id="jr">
+      <span class="jr-fill"></span>
+      <div class="jr-step" style="--d:0s"><div class="jr-node"><em>1</em></div><div class="jr-card"><b>We call you</b><p>A roofing specialist reaches out within 24 hours — a real person from our local team.</p></div></div>
+      <div class="jr-step" style="--d:.22s"><div class="jr-node"><em>2</em></div><div class="jr-card"><b>Free on-site inspection</b><p>Our inspector visits your home and evaluates your roof at no cost.</p></div></div>
+      <div class="jr-step" style="--d:.44s"><div class="jr-node"><em>3</em></div><div class="jr-card"><b>Your honest estimate</b><p>Transparent pricing with $1,000 OFF your new roof. No hidden fees.</p></div></div>
+      <div class="jr-step" style="--d:.66s"><div class="jr-node"><em>4</em></div><div class="jr-card"><b>We build it right</b><p>Our licensed, factory-certified crew installs your new roof the right way.</p></div></div>
+    </div>
+  </section>
+
+  <section class="wait">
+    <div class="wait-head"><h2>While you wait, <span class="hl">a few tips.</span></h2></div>
+    <div class="wait-grid">
+      <div class="wt"><span class="n">1</span><div><b>Don't sign with anyone yet</b><p>Compare licensing, certifications and workmanship — not just the lowest price.</p></div></div>
+      <div class="wt"><span class="n">2</span><div><b>Snap a few photos</b><p>Any leaks, stains or problem areas help us prepare before we arrive.</p></div></div>
+      <div class="wt"><span class="n">3</span><div><b>Have your insurance info handy</b><p>If there's storm damage, we'll help you through the claim.</p></div></div>
+    </div>
+  </section>
+
+  <section class="strip">
+    <div class="strip-in">
+      <img src="https://opshomedirective.github.io/istueta-roofing-funnel/assets/client-1.webp" alt="Happy Istueta Roofing client" loading="lazy">
+      <img src="https://opshomedirective.github.io/istueta-roofing-funnel/assets/client-4.webp" alt="Happy Istueta Roofing client" loading="lazy">
+      <img src="https://opshomedirective.github.io/istueta-roofing-funnel/assets/client-7.webp" alt="Happy Istueta Roofing client" loading="lazy">
+    </div>
+    <p>You're in good hands · 319+ five-star Google reviews</p>
+  </section>
+
+  <footer class="foot">
+    <img src="https://opshomedirective.github.io/istueta-roofing-funnel/assets/logo-white.webp" alt="Istueta Roofing" class="foot-logo" width="480" height="225" loading="lazy">
+    <div class="fl">Roofing Specialists · South Florida<br>Licensed &amp; Insured · FL License CCC054759</div>
+    <div class="fad">7501 NW 7th Street, Miami, FL 33126 · (754) 227-2759</div>
+    <div class="fcopy">© 2026 Istueta Roofing. Family-owned since 1985.</div>
+  </footer>
+
+<script>
+  var jr=document.getElementById('jr');
+  if(jr){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){jr.classList.add('on');o.disconnect();}});},{threshold:.28});o.observe(jr);}
+</script>
+</body>
+</html>
