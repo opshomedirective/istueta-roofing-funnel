@@ -140,20 +140,6 @@
   .call-under a{display:inline-flex;align-items:center;gap:6px;font-weight:900;color:var(--red);border-bottom:2px solid color-mix(in srgb,var(--red) 35%,transparent)}
   .call-under a svg{width:14px;height:14px;stroke:var(--red);fill:none}
 
-  /* mock survey (en GHL lo reemplaza el survey real) */
-  .mk .mk-q{font-weight:800;color:var(--fg);font-size:15px;text-align:center;margin:2px 0 14px}
-  .mk-opt{display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px 16px;margin-bottom:9px;border-radius:12px;background:#fff;border:1.5px solid var(--border);box-shadow:var(--shadow-sm);font-size:14.5px;font-weight:600;color:var(--body);cursor:pointer;transition:.16s}
-  .mk-opt:hover{border-color:var(--bdr-strong);background:var(--soft-2);color:var(--fg)}
-  .mk-opt.sel{background:var(--deep);color:#fff;border-color:var(--deep)}
-  .mk-opt .chk{width:22px;height:22px;border-radius:50%;border:2px solid #d6cfc6;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .mk-opt.sel .chk{background:var(--red);border-color:var(--red)}
-  .mk-opt .chk svg{width:13px;height:13px;stroke:#fff;opacity:0}
-  .mk-opt.sel .chk svg{opacity:1}
-  .mk-next{margin-top:8px;display:flex;align-items:center;justify-content:space-between;padding:0 2px}
-  .mk-count{font-size:13px;color:var(--muted);font-weight:600;flex:1;text-align:center}
-  .mk-arrow{width:46px;height:40px;border-radius:10px;background:var(--deep);display:flex;align-items:center;justify-content:center}
-  .mk-arrow svg{width:18px;height:18px;stroke:#fff}
-  .mk-note{text-align:center;font-size:10.5px;color:var(--muted);margin-top:12px}
 
   /* ══ NUDGE ══ */
   .nudge{text-align:center;padding:10px 16px 26px;position:relative;z-index:1}
@@ -372,7 +358,7 @@
                 <h2><span>Get Your Free Estimate</span><span class="sh">Roof Inspection Included</span></h2>
               </div>
               <div class="form-body">
-                {{custom_values.funnel__survey_code}}
+                <!--SURVEY--><iframe src="https://api.leadconnectorhq.com/widget/survey/rm2ZsHLrR9CpR3M7TmKk" style="border:none;width:100%;" scrolling="no" id="rm2ZsHLrR9CpR3M7TmKk" title="survey" data-cookie-consent="true" data-cookie-consent-provider="auto"></iframe><!--/SURVEY-->
               </div>
             </div>
           </div>
@@ -555,18 +541,12 @@
         <p>Takes just 20 seconds — free roof inspection included.</p>
       </div>
       <div class="pop-body">
-        {{custom_values.funnel__survey_code}}
+        <!--SURVEY--><iframe src="https://api.leadconnectorhq.com/widget/survey/rm2ZsHLrR9CpR3M7TmKk" style="border:none;width:100%;" scrolling="no" id="rm2ZsHLrR9CpR3M7TmKk" title="survey" data-cookie-consent="true" data-cookie-consent-provider="auto"></iframe><!--/SURVEY-->
       </div>
     </div></div>
   </div>
 
 <script>
-  document.querySelectorAll('.mk-opt').forEach(function(o){o.addEventListener('click',function(){
-    var box=o.closest('.mk');
-    box.querySelectorAll('.mk-opt').forEach(function(x){x.classList.remove('sel');});
-    o.classList.add('sel');
-  });});
-
   // carrusel infinito: duplica las fotos una vez
   var tr=document.querySelector('.track'); if(tr){tr.innerHTML+=tr.innerHTML;}
 

@@ -8,9 +8,9 @@ licensed & insured messaging, and a real-client photo carousel.
 
 | File | What it is |
 |---|---|
-| `index.html` | Landing page preview (demo survey, relative image paths) |
+| `index.html` | Landing page (live survey embedded, relative image paths) |
 | `thank-you.html` | Thank-you page preview |
-| `ghl/funnel.html` | **GHL-ready** landing page: survey = `{{custom_values.funnel__survey_code}}`, absolute image URLs |
+| `ghl/funnel.html` | **GHL-ready** landing page: same page with absolute image URLs |
 | `ghl/thank-you.html` | **GHL-ready** thank-you page |
 | `form/survey.css` | Custom CSS for the GHL survey (Istueta colors) |
 | `form/form-header.html` | Survey header block ("Only if you're a homeowner in Miami-Dade or Broward") |
@@ -19,7 +19,7 @@ licensed & insured messaging, and a real-client photo carousel.
 | `AI-STUDIO-PROMPT.md` | Master prompt to import the pages with GHL AI Studio |
 | `build.js` | Regenerates `ghl/` from the previews: `node build.js` |
 
-Only custom value used: `funnel__survey_code`. Everything else is hard-coded.
+No custom values: everything is hard-coded, including the GHL survey embed (`rm2ZsHLrR9CpR3M7TmKk`).
 
 Brand (from istuetaroofing.com): red `#A8131A`, charcoal `#16140F`, cream `#FAF7F4`, clay `#D89B7A`;
 Cormorant Garamond (headlines) + Inter (text). Phone: (754) 227-2759.

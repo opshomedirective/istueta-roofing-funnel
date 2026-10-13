@@ -1,5 +1,5 @@
 // Genera las versiones listas para GHL a partir de las páginas de vista previa:
-//   index.html     → ghl/funnel.html      (survey mock → custom value)
+//   index.html     → ghl/funnel.html      (el survey ya va embebido directo)
 //   thank-you.html → ghl/thank-you.html
 // Las imágenes pasan de rutas relativas (assets/…) a URLs absolutas de GitHub Pages,
 // así el HTML funciona pegado en cualquier lado.
@@ -8,7 +8,6 @@ const fs = require('fs');
 const path = require('path');
 
 const ASSET_BASE = 'https://opshomedirective.github.io/istueta-roofing-funnel/assets/';
-const SURVEY_CV = '{{custom_values.funnel__survey_code}}';
 
 const PAGES = [
   { src: 'index.html', out: 'ghl/funnel.html', survey: true },
@@ -31,9 +30,6 @@ function build(p) {
   // 1) Quitar el comentario de documentación del <head>
   s = s.replace(/<!--\s*\n[\s\S]*?-->\n/, '');
 
-  // 2) Mock del survey → custom value
-  if (p.survey) s = s.replace(/<!--SURVEY-->[\s\S]*?<!--\/SURVEY-->/g, SURVEY_CV);
-
   // 3) Imágenes: relativas → absolutas (src="assets/…" y url('assets/…'))
   s = s.split('"assets/').join('"' + ASSET_BASE);
   s = s.split("'assets/").join("'" + ASSET_BASE);
@@ -41,8 +37,6 @@ function build(p) {
   // 4) Overrides de contenedor GHL
   s = s.replace('</head>', ghlOverrides);
 
-  // 5) Helper de embed de formularios GHL
-  if (p.survey) s = s.replace('</body>', '<script src="https://link.msgsndr.com/js/form_embed.js"></script>\n</body>');
 
   fs.mkdirSync(path.join(__dirname, 'ghl'), { recursive: true });
   fs.writeFileSync(path.join(__dirname, p.out), s);
